@@ -34,7 +34,7 @@ Asignamos variables de entorno localmente
 ```
 cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
 
-$env:IAM_DB_DSN="jdbc:postgresq://localhost:5446/iam_db"
+$env:IAM_DB_DSN="jdbc:postgresql://localhost:5446/iam_db"
 $env:IAM_DB_USERNAME="postgres"
 $env:IAM_DB_PASSWORD="postgres"
 
