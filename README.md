@@ -32,9 +32,9 @@ Asignamos variables de entorno localmente
 ```
 cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
 
-$env:IAM_DB_DSN="jdbc:postgresql://localhost:5446/iam_db"
-$env:IAM_DB_USERNAME="postgres"
-$env:IAM_DB_PASSWORD="postgres"
+$env:IAM_DB_DSN = "jdbc:postgresql://localhost:5446/iam_db"
+$env:IAM_DB_USERNAME = "postgres"
+$env:IAM_DB_PASSWORD = "postgres"
 
 $env:IAM_JWT_PRIVATE_KEY = Get-Content ".\iam-dev-key.pem" -Raw
 $env:IAM_JWT_ISSUER = "design-software-iam"
