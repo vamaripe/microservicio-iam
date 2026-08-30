@@ -2,28 +2,21 @@
 
 HU-07
 
-Levantamos la bd 
+Levantamos la bd. 
 
 ```
 cd "c:\Users\mvale\Desktop\reporteQa\design-software-iam-db"
 docker compose up --build -d
 ```
 
-Ejecutar contrato.
-
-```
-cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
-.\mvnw.cmd -pl contracts generate-sources
-```
-
-Compilamos proyecto 
+Compilamos proyecto y generamos contratos automáticamente
 
 ```
 cd "c:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
-mvn package
+mvn clean install -DskipTests
 ```
 
-Generar clave.
+Generar clave solo si no existe.
 
 ```
 openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -out iam-dev-key.pem
@@ -51,3 +44,9 @@ Corremos la api
 cd "c:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
 mvn -pl iam-api spring-boot:run
 ````
+o
+
+```
+cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service\iam-api"
+mvn spring-boot:run
+```
