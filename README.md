@@ -1,8 +1,16 @@
 # microservicio-iam
 
+Levantamos la bd 
+
+```
+cd "c:\Users\mvale\Desktop\reporteQa\design-software-iam-db"
+docker compose up --build -d
+```
+
 Ejecutar contrato.
 
 ```
+cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
 .\mvnw.cmd -pl contracts generate-sources
 ```
 
@@ -16,28 +24,18 @@ mvn package
 Asignamos variables de entorno localmente
 
 ```
-$env:IAM_DB_DSN="jdbc:postgresql://localhost:5432/design-software-develop"
-$env:IAM_DB_USERNAME="design_software_user"
-$env:IAM_DB_PASSWORD="contrasena"
+cd "C:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
+
+$env:IAM_DB_DSN="jdbc:postgresql://localhost:5446/iam_db"
+$env:IAM_DB_USERNAME="postgres"
+$env:IAM_DB_PASSWORD="postgres"
+
+mvn -pl iam-api spring-boot:run
 ```
+
 Corremos la api
 
 ```
 cd "c:\Users\mvale\Desktop\reporteQa\design-software-iam-service"
 mvn -pl iam-api spring-boot:run
 ````
-Levantamos la bd 
-
-```
-cd "c:\Users\mvale\Desktop\reporteQa\docker-infra"
-Copy-Item .env.develop .env
-docker compose --env-file .env.develop up -d postgres
-```
-
-Limpiamos 
-```
-docker compose -p design-software-db down --volumes --remove-orphans
-docker compose -p design-software-db up -d postgres
-docker compose -p design-software-db --profile tooling run --rm liquibase-iam validate
-docker compose -p design-software-db --profile tooling run --rm liquibase-iam update
-```
